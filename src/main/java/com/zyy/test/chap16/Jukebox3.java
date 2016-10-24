@@ -20,7 +20,8 @@ public class Jukebox3
     
     void getSongs() {
         try {
-            File file = new File("SongList.txt");
+            String filePath = Jukebox1.class.getClassLoader().getResource("SongListMore.txt").getFile();
+            File file = new File(filePath);
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -30,7 +31,7 @@ public class Jukebox3
     }
     
     void addSong(String lineToParse) {
-        String[]tokens = lineToParse.split("/");
+        String[] tokens = lineToParse.split("/");
         Song nextSong = new Song(tokens[0], tokens[1], tokens[2], tokens[3]);
         songList.add(nextSong);
     }
